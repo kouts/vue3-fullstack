@@ -4,7 +4,7 @@ import path from 'path';
 import helmet from 'helmet';
 
 import express, { Request, Response, NextFunction } from 'express';
-import { BAD_REQUEST } from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import 'express-async-errors';
 
 import BaseRouter from './routes';
@@ -40,7 +40,7 @@ app.use('/api', BaseRouter);
 // Print API errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   logger.error(err.message, err);
-  return res.status(BAD_REQUEST).json({
+  return res.status(StatusCodes.BAD_REQUEST).json({
     error: err.message,
   });
 });
