@@ -1,20 +1,10 @@
-/*
-import { request } from '@/common/request';
-
-export const fetchItems = () => {
-  return request({
-    url: 'items/all'
-  });
-};
-*/
-
-import { mande, defaults } from 'mande';
+import { http } from '@/common/http';
 import { Items } from './interfaces';
 
-const items = mande('/api/items', defaults);
-
 function fetchItems() {
-  return items.get<Items>('all');
+  return http.request<void, Items>({
+    url: 'items/all'
+  });
 }
 
 export { fetchItems };

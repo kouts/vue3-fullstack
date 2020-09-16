@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 // Create an axios instance
-const request = axios.create({
+const http = axios.create({
   baseURL: 'api',
   timeout: 5000 // Request timeout
 });
 
 // Request interceptor
-request.interceptors.request.use(
+http.interceptors.request.use(
   config => {
     config.params = config.params || {};
     return config;
@@ -19,7 +19,7 @@ request.interceptors.request.use(
 );
 
 // Response interceptor
-request.interceptors.response.use(
+http.interceptors.response.use(
   response => {
     const res = response.data;
     return res;
@@ -31,4 +31,4 @@ request.interceptors.response.use(
   }
 );
 
-export { request };
+export { http };

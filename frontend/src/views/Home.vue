@@ -26,15 +26,18 @@ export default defineComponent({
   },
   setup() {
     const items = ref<Array<Item>>([]);
-    // const newItems = [
-    //   {
-    //     name: 'test',
-    //     desc: 'This is a desc'
-    //   }
-    // ];
+    /*
+    const newItems = [
+      {
+        name: 'test',
+        desc: 'This is a desc'
+      }
+    ];
+    */
     onMounted(() => {
       fetchItems().then(res => {
-        // console.log(res.items[0].desc);
+        // console.log(res);
+        // console.log(res.items);
         items.value = res.items;
       });
     });
