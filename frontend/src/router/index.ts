@@ -20,6 +20,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       layout: 'default'
     }
+  },
+  {
+    path: '/composition-api',
+    name: 'CompositionApi',
+    component: () => import(/* webpackChunkName: "composition-api" */ '../views/CompositionApi.vue'),
+    meta: {
+      layout: 'default'
+    }
   }
 ];
 

@@ -21,6 +21,9 @@
           <li class="nav-item">
             <router-link to="/about" class="nav-link" @click="collapseNavbar">About</router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/composition-api" class="nav-link" @click="collapseNavbar">Composition API</router-link>
+          </li>
         </ul>
       </div>
     </div>
