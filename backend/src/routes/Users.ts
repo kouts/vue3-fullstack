@@ -13,7 +13,7 @@ const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
   const [users, metadata] = await db.query("SELECT * FROM user");
-  return res.status(StatusCodes.OK).json({ users });  
+  return res.status(StatusCodes.OK).json(users);  
 });
 
 

@@ -7,4 +7,16 @@ interface Items {
   items: Item[];
 }
 
-export { Item, Items };
+interface User {
+  id: number;
+  first_name: string;
+  last_name: string;
+  birthday: string;
+  company: string;
+  email: string;
+  address: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export { Item, Items, User };
