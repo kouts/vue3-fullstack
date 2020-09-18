@@ -5,6 +5,8 @@ import { ParamsDictionary } from 'express-serve-static-core';
 import UserDao from '@daos/User/UserDao.mock';
 import { paramMissingError } from '@shared/constants';
 
+import { db } from '../db/db';
+
 // Init shared
 const router = Router();
 const userDao = new UserDao();
@@ -63,6 +65,13 @@ router.delete('/delete/:id', async (req: Request, res: Response) => {
   return res.status(StatusCodes.OK).end();
 });
 
+
+router.get('/test', async (req: Request, res: Response) => {
+  const [cities, metadata] = await db.query("SELECT * FROM `city` WHERE city_id = :city_id", {
+    replacements: { city_id: 1 }
+  });
+  return res.status(StatusCodes.OK).json({ cities });
+});
 
 /******************************************************************************
  *                                     Export
