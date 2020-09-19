@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <div v-for="user in users" :key="user.id" class="card">
+        <div v-for="user in users" :key="user.id" class="card mb-3">
           <div class="card-body">
             <div class="d-flex flex-row flex-wrap">
               <div class="flex-grow-1">

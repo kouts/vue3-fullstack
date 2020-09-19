@@ -7,4 +7,12 @@ function fetchUsers() {
   });
 }
 
-export { fetchUsers };
+function addUser(user: User) {
+  return http.request<void, number>({
+    method: 'post',
+    url: 'users/add',
+    data: user
+  });
+}
+
+export { fetchUsers, addUser };

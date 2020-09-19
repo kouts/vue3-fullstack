@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       layout: 'default'
     }
-  },  
+  },
   {
     path: '/composition-api',
     name: 'CompositionApi',
