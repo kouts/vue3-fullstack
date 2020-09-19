@@ -17,7 +17,7 @@
               <div class="mb-2 mb-sm-0">
                 <button class="btn btn-sm btn-primary mr-2" type="button" @click="goToUser('display', user.id)">Display</button>
                 <button class="btn btn-sm btn-primary mr-2" type="button" @click="goToUser('edit', user.id)">Edit</button>
-                <button class="btn btn-sm btn-primary" type="button" @click="deleteUser(user.id)">Delete</button>
+                <button class="btn btn-sm btn-primary" type="button" @click="deleteUserAction(user.id)">Delete</button>
               </div>
             </div>
             {{ user.address }}
@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { User } from '../api/interfaces';
-import { fetchUsers } from '../api/user';
+import { fetchUsers, deleteUser } from '../api/user';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -39,26 +39,31 @@ export default {
     const router = useRouter();
     const users = ref<Array<User>>([]);
 
+    const fetchUsersData = () => {
+      return fetchUsers().then((res: User[]) => {
+        // console.log(res[0].first_name);
+        users.value = res;
+      });
+    };
+
     const goToUser = (action: string, id: number) => {
       const userId: number | string = id || '';
       router.push({ path: `/users-details/${action}/${userId}` });
     };
 
-    const deleteUser = (id: number) => {
-      alert(`Deleteing user ${id}`);
+    const deleteUserAction = async(id: number) => {
+      await deleteUser(id);
+      fetchUsersData();
     };
 
     onMounted(() => {
-      fetchUsers().then((res: User[]) => {
-        // console.log(res[0].first_name);
-        users.value = res;
-      });
+      fetchUsersData();
     });
 
     return {
       users,
       goToUser,
-      deleteUser
+      deleteUserAction
     };
   }
 };

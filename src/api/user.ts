@@ -3,12 +3,14 @@ import { User } from './interfaces';
 
 function fetchUsers() {
   return http.request<void, Array<User>>({
+    method: 'get',
     url: 'users'
   });
 }
 
 function fetchUser(id: number) {
   return http.request<void, User>({
+    method: 'get',
     url: 'users/' + id
   });
 }
@@ -16,7 +18,7 @@ function fetchUser(id: number) {
 function addUser(user: User) {
   return http.request<void, unknown>({
     method: 'post',
-    url: 'users/add',
+    url: 'users',
     data: user
   });
 }
@@ -24,9 +26,16 @@ function addUser(user: User) {
 function editUser(user: User) {
   return http.request<void, unknown>({
     method: 'put',
-    url: 'users/update',
+    url: 'users/' + user.id,
     data: user
   });
 }
 
-export { fetchUsers, fetchUser, addUser, editUser };
+function deleteUser(id: number) {
+  return http.request<void, unknown>({
+    method: 'delete',
+    url: 'users/' + id
+  });
+}
+
+export { fetchUsers, fetchUser, addUser, editUser, deleteUser };
