@@ -12,12 +12,12 @@ const router = Router();
 router.get('/all', async (req: Request, res: Response) => {
   const items = [
     {
-      name: 'test1',
-      desc: 'desc1'
+      name: 'List item 1',
+      desc: 'Description 1'
     },
     {
-      name: 'test2',
-      desc: 'desc2'
+      name: 'List item 2',
+      desc: 'Description 2'
     },    
   ]
   return res.status(StatusCodes.OK).json({ items });
