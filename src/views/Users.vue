@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <modal v-model="showDeleteModal" title="Delete user" css-class="mw10">
+    <modal v-model:basedOn="showDeleteModal" title="Delete user" css-class="mw10">
       Hello world!
     </modal>
   </div>

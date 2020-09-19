@@ -70,10 +70,6 @@ let animatingZIndex = 0;
 
 export default {
   name: 'Modal',
-  model: {
-    prop: 'basedOn',
-    event: 'close'
-  },
   props: {
     title: {
       type: String,
@@ -132,7 +128,7 @@ export default {
       default: false
     }
   },
-  emits: ['close', 'before-open', 'opening', 'after-open', 'before-close', 'closing', 'after-close'],
+  emits: ['before-open', 'opening', 'after-open', 'before-close', 'closing', 'after-close', 'update:basedOn'],
   data: function() {
     return {
       zIndex: 0,
@@ -168,7 +164,7 @@ export default {
   methods: {
     close() {
       if (this.enableClose === true) {
-        this.$emit('close', false);
+        this.$emit('update:basedOn', false);
       }
     },
     clickOutside(e) {
