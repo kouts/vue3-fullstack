@@ -14,11 +14,19 @@ function fetchUser(id: number) {
 }
 
 function addUser(user: User) {
-  return http.request<void, number>({
+  return http.request<void, unknown>({
     method: 'post',
     url: 'users/add',
     data: user
   });
 }
 
-export { fetchUsers, fetchUser, addUser };
+function editUser(user: User) {
+  return http.request<void, unknown>({
+    method: 'put',
+    url: 'users/update',
+    data: user
+  });
+}
+
+export { fetchUsers, fetchUser, addUser, editUser };

@@ -43,7 +43,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent, onMounted, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { fetchUser, addUser } from '../api/user';
+import { fetchUser, addUser, editUser } from '../api/user';
 import { User } from '../api/interfaces';
 import { clone } from '@/common/utils';
 import { format } from 'date-fns';
@@ -53,7 +53,7 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
     const routeParams = route.params;
-    let form = ref<User>({
+    const form = ref<User>({
       id: 0,
       first_name: '',
       last_name: '',
@@ -66,10 +66,13 @@ export default defineComponent({
     });
     const save = async() => {
       const toSend = clone(form.value);
+      toSend.updated_at = format(new Date(), 'yyyy-MM-dd hh:mm');
       if (routeParams.action === 'add') {
         toSend.created_at = format(new Date(), 'yyyy-MM-dd hh:mm');
-        toSend.updated_at = format(new Date(), 'yyyy-MM-dd hh:mm');
         await addUser(toSend);
+      }
+      if (routeParams.action === 'edit') {
+        await editUser(toSend);
       }
       router.push({ path: '/users' });
     };
