@@ -17,7 +17,7 @@
               <div class="mb-2 mb-sm-0">
                 <button class="btn btn-sm btn-primary mr-2" type="button" @click="goToUser('display', user.id)">Display</button>
                 <button class="btn btn-sm btn-primary mr-2" type="button" @click="goToUser('edit', user.id)">Edit</button>
-                <button class="btn btn-sm btn-primary" type="button" @click="deleteUserAction(user.id)">Delete</button>
+                <button class="btn btn-sm btn-primary" type="button" @click="showDeleteModal = true">Delete {{ showDeleteModal }}</button>
               </div>
             </div>
             {{ user.address }}
@@ -25,6 +25,9 @@
         </div>
       </div>
     </div>
+    <modal v-model="showDeleteModal" title="Delete user" css-class="mw10">
+      Hello world!
+    </modal>
   </div>
 </template>
 
@@ -38,6 +41,7 @@ export default {
   setup() {
     const router = useRouter();
     const users = ref<Array<User>>([]);
+    const showDeleteModal = ref(false);
 
     const fetchUsersData = () => {
       return fetchUsers().then((res: User[]) => {
@@ -63,8 +67,15 @@ export default {
     return {
       users,
       goToUser,
-      deleteUserAction
+      deleteUserAction,
+      showDeleteModal
     };
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .mw10 {
+    max-width: 640px;
+  }
+</style>

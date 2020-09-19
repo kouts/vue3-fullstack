@@ -1,10 +1,12 @@
 import { createApp } from 'vue';
 import { router } from './router';
 import { store } from './store';
+import Modal from '@/components/Modal.vue';
 import Default from '@/layouts/default/Default.vue';
 import App from './App.vue';
 
 const app = createApp(App);
+app.component('Modal', Modal);
 app.component('LayoutDefault', Default);
 app.use(store);
 app.use(router);
