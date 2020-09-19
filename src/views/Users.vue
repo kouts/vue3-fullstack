@@ -5,7 +5,7 @@
       <div class="col-sm-12">
         <div v-for="user in users" :key="user.id" class="card">
           <div class="card-body">
-            <h2 class="card-title">{{ user.first_name }} {{ user.last_name }} </h2>
+            <h2 class="card-title">{{ user.first_name }} {{ user.last_name }}</h2>
             {{ user.address }}
           </div>
         </div>
@@ -24,6 +24,7 @@ export default {
     const users = ref<Array<User>>([]);
     onMounted(() => {
       fetchUsers().then((res: User[]) => {
+        // console.log(res[0].first_name);
         users.value = res;
       });
     });
