@@ -43,7 +43,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { defineComponent, onMounted, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { addUser } from '../api/user';
+import { fetchUser, addUser } from '../api/user';
 import { User } from '../api/interfaces';
 import { clone } from '@/common/utils';
 import { format } from 'date-fns';
@@ -53,7 +53,7 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
     const routeParams = route.params;
-    const form = ref<User>({
+    let form = ref<User>({
       id: 0,
       first_name: '',
       last_name: '',
@@ -74,8 +74,10 @@ export default defineComponent({
       router.push({ path: '/users' });
     };
 
-    onMounted(() => {
-      // console.log('User details');
+    onMounted(async() => {
+      if (routeParams.action === 'edit') {
+        form.value = await fetchUser(+routeParams.id);
+      }
     });
     return {
       routeParams,

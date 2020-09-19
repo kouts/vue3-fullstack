@@ -7,6 +7,12 @@ function fetchUsers() {
   });
 }
 
+function fetchUser(id: number) {
+  return http.request<void, User>({
+    url: 'users/' + id
+  });
+}
+
 function addUser(user: User) {
   return http.request<void, number>({
     method: 'post',
@@ -15,4 +21,4 @@ function addUser(user: User) {
   });
 }
 
-export { fetchUsers, addUser };
+export { fetchUsers, fetchUser, addUser };
