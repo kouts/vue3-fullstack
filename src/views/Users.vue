@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="d-flex flex-row justify-content-between align-items-center">
-      <h1 class="mb-4">This is the users page</h1>
+      <h1 class="mb-4">Users</h1>
       <div>
         <button type="button" class="btn btn-primary" @click="goToUser('add')">Add user</button>
       </div>
