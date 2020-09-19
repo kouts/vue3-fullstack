@@ -20,7 +20,6 @@ import { Item, Items } from '../api/interfaces';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 export default defineComponent({
-  name: 'Home',
   components: {
     HelloWorld
   },

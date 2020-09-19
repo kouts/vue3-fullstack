@@ -19,6 +19,14 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/users-details/:action/:id',
+    name: 'UserDetails',
+    component: () => import(/* webpackChunkName: "users-details" */ '../views/UserDetails.vue'),
+    meta: {
+      layout: 'default'
+    }
+  },  
+  {
     path: '/composition-api',
     name: 'CompositionApi',
     component: () => import(/* webpackChunkName: "composition-api" */ '../views/CompositionApi.vue'),
