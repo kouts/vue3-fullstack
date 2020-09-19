@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>User {{ routeParams.id }} details - {{ routeParams.action }} </h1>
+    <h1>User {{ routeParams.id ? routeParams.id : 'new' }} details - {{ routeParams.action }} </h1>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default defineComponent({
     const routeParams = route.params;
 
     onMounted(() => {
-      console.log('User details');
+      // console.log('User details');
     });
     return {
       routeParams

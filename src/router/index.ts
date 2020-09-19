@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/users-details/:action/:id',
+    path: '/users-details/:action/:id?',
     name: 'UserDetails',
     component: () => import(/* webpackChunkName: "users-details" */ '../views/UserDetails.vue'),
     meta: {

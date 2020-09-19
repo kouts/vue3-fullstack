@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <h1 class="mb-4">This is the users page</h1>
+    <div class="d-flex flex-row justify-content-between align-items-center">
+      <h1 class="mb-4">This is the users page</h1>
+      <div>
+        <button type="button" class="btn btn-primary" @click="goToUser('add')">Add user</button>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-12">
         <div v-for="user in users" :key="user.id" class="card">
@@ -35,11 +40,12 @@ export default {
     const users = ref<Array<User>>([]);
 
     const goToUser = (action: string, id: number) => {
-      router.push({ path: `/users-details/${action}/${id}` });
+      const userId: number | string = id || '';
+      router.push({ path: `/users-details/${action}/${userId}` });
     };
 
     const deleteUser = (id: number) => {
-      alert(`Deleteing user ${id}`)
+      alert(`Deleteing user ${id}`);
     };
 
     onMounted(() => {
