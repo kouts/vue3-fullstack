@@ -50,7 +50,7 @@ import { clone } from '@/common/utils';
 import { format } from 'date-fns';
 
 export default defineComponent({
-  setup() {
+  setup () {
     const route = useRoute();
     const router = useRouter();
     const routeParams = route.params;
@@ -69,7 +69,7 @@ export default defineComponent({
     const disabled = ref(false);
 
     // onCreated
-    (async() => {
+    (async () => {
       if (routeParams.id) {
         form.value = await fetchUser(+routeParams.id);
         fullName.value = `${form.value.first_name} ${form.value.last_name}`;
@@ -79,7 +79,7 @@ export default defineComponent({
       }
     })();
 
-    const save = async() => {
+    const save = async () => {
       const toSend = clone(form.value);
       toSend.updated_at = format(new Date(), 'yyyy-MM-dd hh:mm');
       if (routeParams.action === 'add') {

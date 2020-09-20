@@ -129,7 +129,7 @@ export default {
     }
   },
   emits: ['before-open', 'opening', 'after-open', 'before-close', 'closing', 'after-close', 'update:basedOn'],
-  data: function() {
+  data: function () {
     return {
       zIndex: 0,
       id: null,
@@ -138,14 +138,14 @@ export default {
       elToFocus: null
     };
   },
-  created() {
+  created () {
     if (this.live) {
       this.mount = true;
     }
   },
-  mounted() {
+  mounted () {
     this.id = 'vm-' + this._uid;
-    this.$watch('basedOn', function(newVal) {
+    this.$watch('basedOn', function (newVal) {
       if (newVal) {
         this.mount = true;
         this.$nextTick(() => {
@@ -158,28 +158,28 @@ export default {
       immediate: true
     });
   },
-  beforeUnmount() {
+  beforeUnmount () {
     this.elToFocus = null;
   },
   methods: {
-    close() {
+    close () {
       if (this.enableClose === true) {
         this.$emit('update:basedOn', false);
       }
     },
-    clickOutside(e) {
+    clickOutside (e) {
       if (e.target === this.$refs['vm-wrapper']) {
         this.close();
       }
     },
-    keydown(e) {
+    keydown (e) {
       if (e.which === 27) {
         this.close();
       }
       if (e.which === 9) {
         // Get only visible elements
         let all = [].slice.call(this.$refs['vm-wrapper'].querySelectorAll('input, select, textarea, button, a'));
-        all = all.filter(function(el) {
+        all = all.filter(function (el) {
           return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
         });
         if (e.shiftKey) {
@@ -195,7 +195,7 @@ export default {
         }
       }
     },
-    getTopZindex() {
+    getTopZindex () {
       let toret = 0;
       const all = document.querySelectorAll('.vm-wrapper');
       for (let i = 0; i < all.length; i++) {
@@ -206,7 +206,7 @@ export default {
       }
       return toret;
     },
-    modalsVisible() {
+    modalsVisible () {
       const all = document.querySelectorAll('.vm-wrapper');
       // We cannot return false unless we make sure that there are not any modals visible
       let foundVisible = 0;
@@ -220,7 +220,7 @@ export default {
       }
       return foundVisible;
     },
-    handleFocus(wrapper) {
+    handleFocus (wrapper) {
       const autofocus = wrapper.querySelector('[autofocus]');
       if (autofocus) {
         autofocus.focus();
@@ -229,7 +229,7 @@ export default {
         focusable.length ? focusable[0].focus() : wrapper.focus();
       }
     },
-    beforeOpen() {
+    beforeOpen () {
       // console.log('beforeOpen');
       this.elToFocus = document.activeElement;
       const lastZindex = this.getTopZindex();
@@ -241,24 +241,24 @@ export default {
       animatingZIndex = this.zIndex;
       this.$emit('before-open');
     },
-    opening() {
+    opening () {
       // console.log('opening');
       this.$emit('opening');
     },
-    afterOpen() {
+    afterOpen () {
       // console.log('afterOpen');
       this.handleFocus(this.$refs['vm-wrapper']);
       this.$emit('after-open');
     },
-    beforeClose() {
+    beforeClose () {
       // console.log('beforeClose');
       this.$emit('before-close');
     },
-    closing() {
+    closing () {
       // console.log('closing');
       this.$emit('closing');
     },
-    afterClose() {
+    afterClose () {
       // console.log('afterClose');
       this.zIndex = 0;
       if (!this.live) {

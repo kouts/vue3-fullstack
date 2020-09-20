@@ -23,7 +23,7 @@ export default defineComponent({
   components: {
     HelloWorld
   },
-  setup() {
+  setup () {
     const items = ref<Array<Item>>([]);
     /*
     const newItems = [

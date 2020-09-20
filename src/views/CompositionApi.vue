@@ -39,7 +39,7 @@
 import { ref, computed } from 'vue';
 
 export default {
-  setup() {
+  setup () {
     const data = ref({
       firstName: 'Giannis',
       lastName: 'Koutsaftakis'

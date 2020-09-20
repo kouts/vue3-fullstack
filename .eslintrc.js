@@ -25,8 +25,7 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
 
     // Custom rules standard
-    semi: ['error', 'always'],
-    'space-before-function-paren': ['error', 'never']
+    semi: ['error', 'always']
   },
   overrides: [
     {
@@ -38,5 +37,5 @@ module.exports = {
         jest: true
       }
     }
-  ] 
+  ]
 };

@@ -34,7 +34,7 @@
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  setup() {
+  setup () {
     const navbarExpanded = ref(false);
     const toggleNavbar = () => {
       navbarExpanded.value = !navbarExpanded.value;

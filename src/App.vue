@@ -12,7 +12,7 @@ import { useRoute } from 'vue-router';
 import '@/scss/app.scss';
 
 export default defineComponent({
-  setup() {
+  setup () {
     const route = useRoute();
     const layout = computed(() => `layout-${route.meta.layout || 'default'}`);
     return {

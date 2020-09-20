@@ -1,21 +1,21 @@
 import { http } from '@/common/http';
 import { User } from './interfaces';
 
-function fetchUsers() {
+function fetchUsers () {
   return http.request<void, Array<User>>({
     method: 'get',
     url: 'users'
   });
 }
 
-function fetchUser(id: number) {
+function fetchUser (id: number) {
   return http.request<void, User>({
     method: 'get',
     url: 'users/' + id
   });
 }
 
-function addUser(user: User) {
+function addUser (user: User) {
   return http.request<void, unknown>({
     method: 'post',
     url: 'users',
@@ -23,7 +23,7 @@ function addUser(user: User) {
   });
 }
 
-function editUser(user: User) {
+function editUser (user: User) {
   return http.request<void, unknown>({
     method: 'put',
     url: 'users/' + user.id,
@@ -31,7 +31,7 @@ function editUser(user: User) {
   });
 }
 
-function deleteUser(id: number) {
+function deleteUser (id: number) {
   return http.request<void, unknown>({
     method: 'delete',
     url: 'users/' + id

@@ -38,7 +38,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default {
-  setup() {
+  setup () {
     const router = useRouter();
     const users = ref<Array<User>>([]);
     const showDeleteModal = ref(false);
@@ -55,7 +55,7 @@ export default {
       router.push({ path: `/users-details/${action}/${userId}` });
     };
 
-    const deleteUserAction = async(id: number) => {
+    const deleteUserAction = async (id: number) => {
       await deleteUser(id);
       fetchUsersData();
     };
