@@ -14,7 +14,9 @@
         </div>
         <div class="col-sm-6 form-group">
           <label>Birthday</label>
-          <input v-model="form.birthday" type="text" class="form-control" :disabled="disabled">
+          <!-- <input v-model="form.birthday" type="text" class="form-control" :disabled="disabled"><br /> -->
+          <date-input v-model="form.birthday" />
+          <small>v-model value: <em>{{ form.birthday }}</em></small>
         </div>
         <div class="col-sm-6 form-group">
           <label>Company</label>
@@ -45,11 +47,15 @@
 import { defineComponent, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { fetchUser, addUser, editUser } from '../api/user';
-import { User } from '../api/interfaces';
+import { User } from '@/api/interfaces';
 import { clone } from '@/common/utils';
 import { format } from 'date-fns';
+import DateInput from '@/components/DateInput.vue';
 
 export default defineComponent({
+  components: {
+    DateInput
+  },
   setup () {
     const route = useRoute();
     const router = useRouter();
@@ -67,6 +73,7 @@ export default defineComponent({
     });
     const fullName = ref('');
     const disabled = ref(false);
+    const testDate = ref('');
 
     // onCreated
     (async () => {
@@ -97,7 +104,8 @@ export default defineComponent({
       fullName,
       routeParams,
       form,
-      save
+      save,
+      testDate
     };
   }
 });
