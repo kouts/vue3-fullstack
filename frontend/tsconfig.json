@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "interface-name": [true, "always-prefix"],
     "types": [
       "webpack-env",
       "jest"
