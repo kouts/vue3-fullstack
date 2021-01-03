@@ -35,18 +35,33 @@
   </div>
 </template>
 
-<script>
-import { ref, computed } from 'vue';
+<script lang="ts">
+import { ref, computed, defineComponent } from 'vue';
 
-export default {
+const phrase = 'Hello world';
+function replaceAll (str: string, find: string, replace: string): string {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+const res = replaceAll(phrase, 'world', 'john');
+console.log(res);
+
+interface IUser {
+  firstName: string;
+  lastName: string;
+}
+
+export default defineComponent({
   setup () {
-    const data = ref({
+    const user = {
       firstName: 'Giannis',
       lastName: 'Koutsaftakis'
-    });
+    };
+    const data = ref<IUser>();
     const num1 = ref(0);
     const num2 = ref(0);
     const result = computed(() => +num1.value + +num2.value);
+    data.value = user;
+
     return {
       data,
       num1,
@@ -54,7 +69,7 @@ export default {
       result
     };
   }
-};
+});
 </script>
 
 <style>
