@@ -15,7 +15,7 @@
         <div class="col-sm-6 form-group">
           <label>Birthday</label>
           <!-- <input v-model="form.birthday" type="text" class="form-control" :disabled="disabled"><br /> -->
-          <date-input v-model="form.birthday" />
+          <date-input v-model="form.birthday" :disabled="disabled" />
           <small>v-model value: <em>{{ form.birthday }}</em></small>
         </div>
         <div class="col-sm-6 form-group">
