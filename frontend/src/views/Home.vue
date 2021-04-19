@@ -16,7 +16,7 @@
 
 import { defineComponent, onMounted, ref } from 'vue';
 import { fetchItems } from '../api/api';
-import { Item, Items } from '../api/interfaces';
+import { IItem, IItems } from '../api/interfaces';
 import HelloWorld from '@/components/HelloWorld.vue';
 
 export default defineComponent({
@@ -24,7 +24,7 @@ export default defineComponent({
     HelloWorld
   },
   setup () {
-    const items = ref<Array<Item>>([]);
+    const items = ref<Array<IItem>>([]);
     /*
     const newItems = [
       {
@@ -34,7 +34,7 @@ export default defineComponent({
     ];
     */
     onMounted(() => {
-      fetchItems().then((res: Items) => {
+      fetchItems().then((res: IItems) => {
         // console.log(res);
         // console.log(res.items);
         items.value = res.items;

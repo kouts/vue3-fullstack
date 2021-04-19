@@ -47,7 +47,7 @@
 import { defineComponent, ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { fetchUser, addUser, editUser } from '../api/user';
-import { User } from '@/api/interfaces';
+import { IUser } from '@/api/interfaces';
 import { clone } from '@/common/utils';
 import { format } from 'date-fns';
 import DateInput from '@/components/DateInput.vue';
@@ -60,7 +60,7 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
     const routeParams = route.params;
-    const form = ref<User>({
+    const form = ref<IUser>({
       id: 0,
       first_name: '',
       last_name: '',

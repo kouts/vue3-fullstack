@@ -1,13 +1,13 @@
-interface Item {
+interface IItem {
   name: string;
   desc: string;
 }
 
-interface Items {
-  items: Item[];
+interface IItems {
+  items: IItem[];
 }
 
-interface User {
+interface IUser {
   id: number;
   first_name: string;
   last_name: string;
@@ -19,4 +19,4 @@ interface User {
   updated_at: string;
 }
 
-export { Item, Items, User };
+export { IItem, IItems, IUser };

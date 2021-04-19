@@ -1,8 +1,8 @@
 import { http } from '@/common/http';
-import { Items } from './interfaces';
+import { IItems } from './interfaces';
 
 function fetchItems () {
-  return http.request<void, Items>({
+  return http.request<void, IItems>({
     url: 'items/all'
   });
 }

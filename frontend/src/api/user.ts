@@ -1,21 +1,21 @@
 import { http } from '@/common/http';
-import { User } from './interfaces';
+import { IUser } from './interfaces';
 
 function fetchUsers () {
-  return http.request<void, Array<User>>({
+  return http.request<void, Array<IUser>>({
     method: 'get',
     url: 'users'
   });
 }
 
 function fetchUser (id: number) {
-  return http.request<void, User>({
+  return http.request<void, IUser>({
     method: 'get',
     url: 'users/' + id
   });
 }
 
-function addUser (user: User) {
+function addUser (user: IUser) {
   return http.request<void, unknown>({
     method: 'post',
     url: 'users',
@@ -23,7 +23,7 @@ function addUser (user: User) {
   });
 }
 
-function editUser (user: User) {
+function editUser (user: IUser) {
   return http.request<void, unknown>({
     method: 'put',
     url: 'users/' + user.id,

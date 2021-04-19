@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { User } from '@/api/interfaces';
+import { IUser } from '@/api/interfaces';
 import { fetchUsers, deleteUser } from '@/api/user';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
@@ -56,13 +56,13 @@ export default {
   },
   setup () {
     const router = useRouter();
-    const users = ref<Array<User>>([]);
+    const users = ref<Array<IUser>>([]);
     const showDeleteModal = ref(false);
     const idToDelete = ref(0);
     const usersLoading = ref(true);
 
     const fetchUsersData = () => {
-      return fetchUsers().then((res: User[]) => {
+      return fetchUsers().then((res: IUser[]) => {
         // console.log(res[0].first_name);
         users.value = res;
         usersLoading.value = false;
